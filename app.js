@@ -1,10 +1,10 @@
-const cors = require("cors");
 const express = require("express");
-//const vampsController = require('./controllers/vampsController');
-
 const app = express()
-app.use(cors());
+const cors = require("cors");
+const vampsController = require('./controllers/vampsController');
+
 app.use(express.json());
+app.use(cors());
 app.use('/vampires',vampsController);
 
 app.get('/',(req,res)=>{

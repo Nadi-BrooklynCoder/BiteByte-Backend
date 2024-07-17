@@ -13,4 +13,4 @@ CREATE TABLE vampires (
     power TEXT,
     is_dangerous BOOLEAN NOT NULL,
     date_documented DATE DEFAULT CURRENT_DATE
-)
+);
