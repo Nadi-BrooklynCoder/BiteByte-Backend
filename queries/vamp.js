@@ -10,5 +10,13 @@ const getAllVampires = async () => {
     }
 }
 
+const getOneVampire = async (id) => {
+    try {
+        const oneVamp = await db.one("SELECT * FROM vampires WHERE id=$1", id)
+return oneVamp
+    } catch (error) {
+        return error
+    }
+}
 
-module.exports = getAllVampires; 
+module.exports = { getAllVampires, getOneVampire }; 
