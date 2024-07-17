@@ -1,5 +1,5 @@
 const pgp = require("pg-promise")();
-//loading in the library our enviorment variables 
+ 
 require("dotenv").config();
 
 const cn = {

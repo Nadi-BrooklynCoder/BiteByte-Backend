@@ -1,6 +1,6 @@
 const express = require('express');
 const vampires = express.Router();
-const  {getAllVampires, getOneVampire, updateVampireInformation}  = require('../queries/vamp');
+const  {getAllVampires, getOneVampire, updateVampireInformation, createVampire, deleteVampire}  = require('../queries/vamp');
 
 
 // http:localhost3333/vampires
@@ -20,6 +20,23 @@ vampires.get('/:id', async (req, res)=>{
         res.status(200).json(oneVampire);
     }else{
         res.status(404).json({error: "Vampire Can Not Be Found"});
+    }
+})
+
+vampires.post("/", async (req ,res) => {
+    const newVampire = await createVampire(req.body);
+
+    res.status(201).json(newVampire)
+})
+
+vampires.delete("/:id", async (req, res) => {
+    const { id } = req.params
+    const killedVampire = await deleteVampire(id)
+    
+    if(killedVampire.id) {
+        res.status(200).json({ message: "Vampire turned into dust." })
+    } else {
+        res.status(404).json( {error: "Vampire escaped." })
     }
 })
 
