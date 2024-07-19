@@ -2,10 +2,9 @@ const express = require('express');
 const vampires = express.Router();
 const  {getAllVampires, getOneVampire, updateVampireInformation, createVampire, deleteVampire}  = require('../queries/vamp');
 
-
-// http:localhost3333/vampires
 vampires.get("/", async (req, res) => {
     const allVampires = await getAllVampires();
+    
     if (allVampires[0]) {
         res.status(200).json(allVampires);
     } else {
